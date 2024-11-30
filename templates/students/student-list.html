@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Student Management</title>
+    <style>
+        table {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        table, th, td {
+            border: 1px solid black;
+        }
+        th, td {
+            padding: 10px;
+            text-align: left;
+        }
+        .form-container {
+            margin-bottom: 20px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Student Management</h1>
+
+    <!-- Form to add a new student -->
+    <div class="form-container">
+        <h3>Create New Student</h3>
+        <form method="GET" >
+            <label for="first_name">First Name:</label>
+            <input type="text" id="first_name" name="first_name" required><br><br>
+
+            <label for="last_name">Last Name:</label>
+            <input type="text" id="last_name" name="last_name" required><br><br>
+
+            <label for="email">Email:</label>
+            <input type="email" id="email" name="email" required><br><br>
+
+            <label for="date">Date of Birth:</label>
+            <input type="date" id="date" name="date" required><br><br>
+
+            <label for="gender">Gender:</label>
+            <select id="gender" name="gender" required>
+                <option value="Male">Male</option>
+                <option value="Female">Female</option>
+            </select><br><br>
+
+            <label for="address">Address:</label><br>
+            <textarea id="address" name="address" rows="3" cols="40" required></textarea><br><br>
+
+            <button type="submit">Create Student</button>
+        </form>
+    </div>
+
+    <!-- Dynamic Students List -->
+    <h3 class="h3">Students List</h3>
+    <table style="border: 1px solid black;">
+        <thead class="matn">
+            <tr class="matn">
+                <th>First Name</th>
+                <th>Last Name</th>
+                <th>Email</th>
+                <th>Date of Birth</th>
+                <th>Address</th>
+                <th>Gender</th>
+            </tr>
+        </thead>
+        <tbody class="matn1">
+            {% for students in students %}
+            <tr>
+                <td>{{ students.first_name }}</td>
+                <td>{{ students.last_name }}</td>
+                <td>{{ students.email }}</td>
+                <td>{{ students.date }}</td>
+                <td>{{ students.address }}</td>
+                <td>{{ students.gender }}</td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</body>
+</html>
